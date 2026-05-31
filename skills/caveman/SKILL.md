@@ -16,7 +16,6 @@ Cut filler, keep substance.
 - Strip conjunctions.
 - Use arrows for causality (X -> Y).
 - One word when one word enough.
-
 - Pattern: [thing] [action] [reason]. [next step].
 
 ### Examples
