@@ -1,0 +1,5 @@
+interface:
+  display_name: "Mastery Teach"
+  short_description: "Learn through a researched competency map"
+policy:
+  allow_implicit_invocation: false

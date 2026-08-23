@@ -1,0 +1,58 @@
+schema_version: 1
+assessments:
+  - id: A001
+    title: Relational design external problem set
+    provenance: external
+    source_id: null
+    url: null
+    date_or_version: null
+    node_ids:
+      - db.relational.constraints
+      - db.relational.normalization
+    outcome_ids: {}
+    answer_key_available: false
+    access: to-be-researched
+    notes: Placeholder illustrating map linkage.
+
+  - id: A002
+    title: SQL external problem set
+    provenance: external
+    source_id: null
+    url: null
+    date_or_version: null
+    node_ids:
+      - db.sql.joins
+      - db.sql.aggregation
+    outcome_ids: {}
+    answer_key_available: false
+    access: to-be-researched
+    notes: Placeholder.
+
+  - id: A003
+    title: Transactions and isolation external problems
+    provenance: external
+    source_id: null
+    url: null
+    date_or_version: null
+    node_ids:
+      - db.transactions.atomicity
+      - db.transactions.isolation
+    outcome_ids: {}
+    answer_key_available: false
+    access: to-be-researched
+    notes: Placeholder.
+
+  - id: A004
+    title: Indexing and query-planning external problems
+    provenance: external
+    source_id: null
+    url: null
+    date_or_version: null
+    node_ids:
+      - db.indexes.btree
+      - db.indexes.composite
+      - db.indexes.query-plan
+    outcome_ids: {}
+    answer_key_available: false
+    access: to-be-researched
+    notes: Placeholder.

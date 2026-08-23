@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Mastery Teach Learner Progress",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "map_id",
+    "map_version",
+    "nodes",
+    "evidence"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "map_id": {
+      "type": "string"
+    },
+    "map_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "updated_at": {
+      "type": "string"
+    },
+    "learner": {
+      "type": "object"
+    },
+    "nodes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "level",
+          "confidence",
+          "retention",
+          "outcome_state"
+        ],
+        "properties": {
+          "level": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4
+          },
+          "confidence": {
+            "enum": [
+              "low",
+              "moderate",
+              "strong"
+            ]
+          },
+          "retention": {
+            "enum": [
+              "fresh",
+              "due",
+              "confirmed",
+              "uncertain"
+            ]
+          },
+          "last_evidence": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "next_review": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "outcome_state": {
+            "type": "object",
+            "additionalProperties": {
+              "enum": [
+                "unknown",
+                "introduced",
+                "demonstrated",
+                "weak"
+              ]
+            }
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "node",
+          "date",
+          "type",
+          "source",
+          "result"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "node": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "source": {
+            "enum": [
+              "tutor_generated",
+              "external",
+              "practical",
+              "learner_prior"
+            ]
+          },
+          "assessment_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "outcome_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "result": {
+            "enum": [
+              "pass",
+              "partial",
+              "fail",
+              "informational"
+            ]
+          },
+          "quality": {
+            "enum": [
+              "weak",
+              "moderate",
+              "strong"
+            ]
+          },
+          "independence": {
+            "enum": [
+              "guided",
+              "lightly_guided",
+              "independent"
+            ]
+          },
+          "notes": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "review_queue": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}

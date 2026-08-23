@@ -1,0 +1,70 @@
+schema_version: 1
+map_id: database-systems
+map_version: 1
+updated_at: "2026-08-22"
+
+learner:
+  current_focus: db.relational.constraints
+
+nodes:
+  db.relational.keys:
+    level: 2
+    confidence: moderate
+    retention: fresh
+    last_evidence: "2026-08-22"
+    next_review: "2026-08-29"
+    outcome_state:
+      candidate-key: demonstrated
+      foreign-key: demonstrated
+    evidence_ids: [E0001, E0002]
+
+  db.relational.constraints:
+    level: 1
+    confidence: low
+    retention: fresh
+    last_evidence: "2026-08-22"
+    next_review: null
+    outcome_state:
+      choose-constraint: introduced
+      composite-uniqueness: demonstrated
+    evidence_ids: [E0003]
+
+evidence:
+  - id: E0001
+    node: db.relational.keys
+    date: "2026-08-22"
+    type: canonical_task
+    source: tutor_generated
+    assessment_id: null
+    outcome_ids: [candidate-key]
+    result: pass
+    quality: moderate
+    independence: independent
+    notes: Correctly identified candidate/primary keys in a standard schema.
+
+  - id: E0002
+    node: db.relational.keys
+    date: "2026-08-22"
+    type: canonical_task
+    source: tutor_generated
+    assessment_id: null
+    outcome_ids: [foreign-key]
+    result: pass
+    quality: moderate
+    independence: independent
+    notes: Correctly modeled one-to-one and one-to-many foreign keys.
+
+  - id: E0003
+    node: db.relational.constraints
+    date: "2026-08-22"
+    type: canonical_task
+    source: tutor_generated
+    assessment_id: null
+    outcome_ids: [composite-uniqueness]
+    result: pass
+    quality: moderate
+    independence: lightly_guided
+    notes: Correctly used a composite UNIQUE invariant for a scheduling example.
+
+review_queue:
+  - db.relational.keys

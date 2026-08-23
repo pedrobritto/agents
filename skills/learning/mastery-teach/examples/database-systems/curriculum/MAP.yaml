@@ -1,0 +1,376 @@
+schema_version: 1
+map_id: database-systems
+title: Database Systems
+version: 1
+mission_scope: Advanced relational core with intermediate PostgreSQL specialization.
+
+completion_policy:
+  required_importance: [core]
+  minimum_level: 3
+  require_mastery_for:
+    - db.capstone.relational-design
+
+domains:
+  - id: relational-model
+    title: Relational model and schema design
+  - id: sql
+    title: SQL
+  - id: transactions
+    title: Transactions and concurrency
+  - id: indexing
+    title: Indexing and query performance
+  - id: integration
+    title: Integrative practice
+
+nodes:
+  - id: db.relational.keys
+    title: Keys and entity identity
+    domain: relational-model
+    importance: core
+    depth: foundational
+    description: Choose primary, candidate, and foreign keys and explain the integrity they establish.
+    prerequisites:
+      all_of: []
+      any_of: []
+    outcomes:
+      - id: candidate-key
+        statement: Identify candidate keys and justify a primary key choice.
+      - id: foreign-key
+        statement: Place foreign keys correctly for one-to-one and one-to-many relationships.
+    evidence_modes: [explanation, canonical_task, novel_problem]
+    level_criteria:
+      familiar:
+        - Explain primary and foreign keys in a simple schema.
+      functional:
+        - Correctly model keys for ordinary one-to-one and one-to-many cases without hints.
+      proficient:
+        - Resolve ambiguous identity/key choices and explain tradeoffs.
+    resource_ids: [R001]
+    external_assessment_ids: []
+    unlocks: [db.relational.constraints, db.relational.many-to-many]
+
+  - id: db.relational.constraints
+    title: Declarative integrity constraints
+    domain: relational-model
+    importance: core
+    depth: foundational
+    description: Encode business invariants with NOT NULL, UNIQUE, CHECK, foreign keys, and composite constraints.
+    prerequisites:
+      all_of:
+        - node: db.relational.keys
+          min_level: 2
+      any_of: []
+    outcomes:
+      - id: choose-constraint
+        statement: Translate common invariants into appropriate declarative constraints.
+      - id: composite-uniqueness
+        statement: Recognize when uniqueness belongs to a tuple rather than a single column.
+    evidence_modes: [canonical_task, novel_problem, design, external_assessment]
+    level_criteria:
+      familiar:
+        - Explain the purpose of the common relational constraints.
+      functional:
+        - Encode common invariants correctly without application-only checks.
+      proficient:
+        - Detect subtle missing or over-restrictive constraints in unfamiliar schemas.
+    resource_ids: [R001]
+    external_assessment_ids: [A001]
+    unlocks: [db.relational.many-to-many, db.relational.normalization]
+
+  - id: db.relational.many-to-many
+    title: Many-to-many relationships
+    domain: relational-model
+    importance: core
+    depth: foundational
+    description: Model many-to-many relationships with associative relations and appropriate identity/integrity.
+    prerequisites:
+      all_of:
+        - node: db.relational.keys
+          min_level: 2
+        - node: db.relational.constraints
+          min_level: 2
+      any_of: []
+    outcomes:
+      - id: junction
+        statement: Create an associative table and choose a defensible key strategy.
+      - id: relationship-data
+        statement: Place attributes that belong to the relationship on the associative relation.
+    evidence_modes: [canonical_task, design, novel_problem]
+    level_criteria:
+      familiar:
+        - Explain why a direct foreign key cannot represent unrestricted many-to-many cardinality.
+      functional:
+        - Model ordinary many-to-many cases independently.
+      proficient:
+        - Model relationship attributes, uniqueness, and lifecycle constraints in ambiguous cases.
+    resource_ids: [R001]
+    external_assessment_ids: []
+    unlocks: [db.relational.normalization]
+
+  - id: db.relational.normalization
+    title: Functional dependencies and normalization
+    domain: relational-model
+    importance: core
+    depth: intermediate
+    description: Use functional dependencies to detect redundancy/anomalies and decompose schemas deliberately.
+    prerequisites:
+      all_of:
+        - node: db.relational.constraints
+          min_level: 2
+        - node: db.relational.many-to-many
+          min_level: 2
+      any_of: []
+    outcomes:
+      - id: fd
+        statement: Derive and reason about functional dependencies from domain rules.
+      - id: anomalies
+        statement: Identify update/insert/delete anomalies caused by redundancy.
+      - id: decompose
+        statement: Normalize representative schemas and explain tradeoffs.
+    evidence_modes: [explanation, canonical_task, novel_problem, external_assessment]
+    level_criteria:
+      familiar:
+        - Explain a functional dependency and why normalization reduces anomalies.
+      functional:
+        - Normalize standard examples through the mission-required normal forms.
+      proficient:
+        - Infer dependencies from unfamiliar domains and justify decompositions/tradeoffs.
+    resource_ids: [R002]
+    external_assessment_ids: [A001]
+    unlocks: [db.capstone.relational-design]
+
+  - id: db.sql.joins
+    title: Join reasoning
+    domain: sql
+    importance: core
+    depth: foundational
+    description: Construct joins from relationship semantics and predict row-preservation/cardinality behavior.
+    prerequisites:
+      all_of:
+        - node: db.relational.keys
+          min_level: 2
+      any_of: []
+    outcomes:
+      - id: construct
+        statement: Write correct joins from a schema and question.
+      - id: predict
+        statement: Predict duplicate/missing rows from join cardinality and join type.
+    evidence_modes: [canonical_task, novel_problem, diagnosis, external_assessment]
+    level_criteria:
+      familiar:
+        - Explain inner versus outer join behavior.
+      functional:
+        - Write common joins and predict results without hints.
+      proficient:
+        - Debug unfamiliar joins with cardinality traps and justify alternatives.
+    resource_ids: [R003]
+    external_assessment_ids: [A002]
+    unlocks: [db.sql.aggregation]
+
+  - id: db.sql.aggregation
+    title: Aggregation and grouping
+    domain: sql
+    importance: core
+    depth: intermediate
+    description: Build grouped queries and reason about aggregation grain.
+    prerequisites:
+      all_of:
+        - node: db.sql.joins
+          min_level: 2
+      any_of: []
+    outcomes:
+      - id: grain
+        statement: State the output grain of a query before implementing aggregation.
+      - id: aggregate
+        statement: Write grouped queries without accidental double counting.
+    evidence_modes: [canonical_task, novel_problem, diagnosis]
+    level_criteria:
+      familiar:
+        - Explain GROUP BY and aggregate functions.
+      functional:
+        - Write correct standard grouped queries.
+      proficient:
+        - Diagnose double counting and grain errors in multi-join aggregates.
+    resource_ids: [R003]
+    external_assessment_ids: [A002]
+    unlocks: []
+
+  - id: db.transactions.atomicity
+    title: Transactions and atomic state change
+    domain: transactions
+    importance: core
+    depth: foundational
+    description: Define transaction boundaries that preserve invariants under failure.
+    prerequisites:
+      all_of:
+        - node: db.relational.constraints
+          min_level: 2
+      any_of: []
+    outcomes:
+      - id: boundary
+        statement: Choose transaction boundaries for multi-step state changes.
+      - id: failure
+        statement: Explain rollback/commit behavior under partial failure.
+    evidence_modes: [explanation, design, novel_problem]
+    level_criteria:
+      familiar:
+        - Explain atomic commit and rollback.
+      functional:
+        - Identify correct boundaries for common multi-step operations.
+      proficient:
+        - Design failure-safe transactional workflows with competing invariants.
+    resource_ids: [R004]
+    external_assessment_ids: [A003]
+    unlocks: [db.transactions.isolation]
+
+  - id: db.transactions.isolation
+    title: Isolation anomalies and concurrency reasoning
+    domain: transactions
+    importance: core
+    depth: advanced
+    description: Reason about concurrent histories, anomalies, and isolation choices.
+    prerequisites:
+      all_of:
+        - node: db.transactions.atomicity
+          min_level: 2
+      any_of: []
+    outcomes:
+      - id: anomaly
+        statement: Identify anomalies from interleaved transaction histories.
+      - id: isolation-choice
+        statement: Choose an isolation/locking strategy from correctness requirements.
+    evidence_modes: [novel_problem, diagnosis, design, external_assessment, delayed_retrieval]
+    level_criteria:
+      familiar:
+        - Describe major isolation anomalies in concrete terms.
+      functional:
+        - Classify standard histories and select common isolation levels.
+      proficient:
+        - Analyze unfamiliar concurrent workflows and justify correctness mechanisms.
+    resource_ids: [R004]
+    external_assessment_ids: [A003]
+    unlocks: [db.capstone.relational-design]
+
+  - id: db.indexes.btree
+    title: B-tree index fundamentals
+    domain: indexing
+    importance: core
+    depth: intermediate
+    description: Predict when an ordered B-tree index can reduce query work.
+    prerequisites:
+      all_of:
+        - node: db.sql.joins
+          min_level: 2
+      any_of: []
+    outcomes:
+      - id: access
+        statement: Explain ordered index lookup/range behavior at a practical level.
+      - id: useful
+        statement: Predict when a simple B-tree index is likely useful or useless.
+    evidence_modes: [explanation, canonical_task, novel_problem]
+    level_criteria:
+      familiar:
+        - Explain the practical purpose of a B-tree index.
+      functional:
+        - Choose sensible single-column indexes for standard queries.
+      proficient:
+        - Reason through selectivity, ordering, and tradeoffs in unfamiliar workloads.
+    resource_ids: [R005]
+    external_assessment_ids: [A004]
+    unlocks: [db.indexes.composite]
+
+  - id: db.indexes.composite
+    title: Composite indexes
+    domain: indexing
+    importance: core
+    depth: intermediate
+    description: Choose and reason about multi-column indexes from query patterns.
+    prerequisites:
+      all_of:
+        - node: db.indexes.btree
+          min_level: 2
+      any_of: []
+    outcomes:
+      - id: choose-order
+        statement: Choose column order from equality, range, sorting, and workload requirements.
+      - id: predict-use
+        statement: Predict whether representative queries can exploit the index and validate the prediction.
+    evidence_modes: [explanation, canonical_task, novel_problem, practical_task, delayed_retrieval, external_assessment]
+    level_criteria:
+      familiar:
+        - Explain why column order matters.
+      functional:
+        - Choose reasonable composite indexes for common query patterns independently.
+      proficient:
+        - Compare alternatives for unfamiliar workloads and validate using query-plan evidence.
+    resource_ids: [R005]
+    external_assessment_ids: [A004]
+    unlocks: [db.indexes.query-plan]
+
+  - id: db.indexes.query-plan
+    title: Query-plan diagnosis
+    domain: indexing
+    importance: core
+    depth: advanced
+    description: Use query plans to test performance hypotheses and diagnose plan choices.
+    prerequisites:
+      all_of:
+        - node: db.indexes.composite
+          min_level: 2
+      any_of: []
+    outcomes:
+      - id: read-plan
+        statement: Read the main operators, estimated/actual rows, and timing/work signals in a plan.
+      - id: diagnose
+        statement: Form and test hypotheses for a poor plan rather than blindly adding indexes.
+    evidence_modes: [diagnosis, practical_task, novel_problem, external_assessment]
+    level_criteria:
+      familiar:
+        - Identify the main parts of a query plan.
+      functional:
+        - Use a plan to validate straightforward indexing hypotheses.
+      proficient:
+        - Diagnose unfamiliar bad plans and distinguish symptoms from causes.
+    resource_ids: [R005]
+    external_assessment_ids: [A004]
+    unlocks: [db.capstone.relational-design]
+
+  - id: db.capstone.relational-design
+    title: Integrated relational database design
+    domain: integration
+    importance: core
+    depth: advanced
+    description: Design, justify, and test a small production-style relational database across integrity, concurrency, and performance concerns.
+    prerequisites:
+      all_of:
+        - node: db.relational.normalization
+          min_level: 3
+        - node: db.transactions.isolation
+          min_level: 3
+        - node: db.indexes.query-plan
+          min_level: 3
+      any_of: []
+    outcomes:
+      - id: schema
+        statement: Produce and defend a schema and integrity model.
+      - id: concurrency
+        statement: Identify critical concurrent workflows and protect their invariants.
+      - id: performance
+        statement: Define representative workloads, index deliberately, and validate with plans.
+    evidence_modes: [design, practical_task, transfer, external_assessment, delayed_retrieval]
+    level_criteria:
+      familiar:
+        - Explain how integrity, concurrency, and performance concerns interact.
+      functional:
+        - Complete a guided integrated design.
+      proficient:
+        - Independently design and defend an unfamiliar production-style case.
+    resource_ids: [R001, R004, R005]
+    external_assessment_ids: []
+    unlocks: []
+
+research_notes:
+  uncertainties:
+    - This example map is intentionally small and demonstrates mechanics; it is not a complete database-systems curriculum.
+  gaps:
+    - Query optimization internals, storage, recovery/WAL, advanced SQL, and deeper PostgreSQL internals are omitted from this example.
