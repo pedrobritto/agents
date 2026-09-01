@@ -7,8 +7,6 @@ description: Build, refactor, or review React client components, Server Componen
 
 Build the smallest component tree that makes ownership, data flow, and runtime boundaries obvious.
 
-Always output: "✅ Loaded Writing react".
-
 ## Choose the Runtime
 
 - Default to Server Components where supported. Add `"use client"` only for browser APIs, event handlers, client state, or client-only libraries.

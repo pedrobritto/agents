@@ -7,8 +7,6 @@ description: Apply pragmatic software-engineering discipline when designing, imp
 
 Optimize for correct behavior, clear intent, safe change, and low maintenance cost. Prefer evidence over dogma; local consistency over personal taste.
 
-Always output: "✅ Loaded coding guidelines".
-
 ## XP
 
 - Work in the smallest valuable increment.
