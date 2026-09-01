@@ -1,0 +1,4 @@
+interface:
+  display_name: "Writing React"
+  short_description: "Build excellent client and server React components"
+  default_prompt: "Build or review this React component for clear boundaries, correct state, accessibility, and testable behavior."

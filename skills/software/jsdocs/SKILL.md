@@ -1,4 +1,9 @@
-# JSDocs Guidelines
+---
+name: jsdocs
+description: On writing good jsdocs.
+---
+
+# JSDocs
 
 ## Overview
 

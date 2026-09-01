@@ -1,0 +1,4 @@
+interface:
+  display_name: "Coding Guideliens"
+  short_description: "Build simple, clean, maintainable software"
+  default_prompt: "Use $coding-guidelines to implement or review this change with concise engineering discipline."
