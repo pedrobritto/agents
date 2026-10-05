@@ -1,6 +1,6 @@
 ---
 name: ponytail
-description: Custom version. Channels a senior dev who has seen everything.
+description: Channels a senior dev who has seen everything.
 disable-model-invocation: true
 ---
 
