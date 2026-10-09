@@ -1,0 +1,22 @@
+{
+  "name": "agents",
+  "version": "1.0.0",
+  "description": "My personal collection of skills, tools, configs, etc for agentic workflows.",
+  "main": "index.js",
+  "scripts": {
+    "copy:global:skills": "sh ./scripts/copy-skills.sh",
+    "copy:codex:instructions": "sh ./scripts/copy-codex-instructions.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedrobritto/agents.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/pedrobritto/agents/issues"
+  },
+  "homepage": "https://github.com/pedrobritto/agents#readme"
+}

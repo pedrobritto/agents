@@ -16,4 +16,5 @@ find ./skills -type f -name 'SKILL.md' -exec dirname {} \; |
 		cp -R -f "$dir" $TARGET_DIR
 	done
 
+echo ✓ Copy successful!
 exit 0
