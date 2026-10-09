@@ -1,33 +1,19 @@
 # Deep Modules
 
-From "A Philosophy of Software Design":
+Pick Deep Modules when possible. Shallow only when deep not possible.
 
-**Deep module** = small interface + lots of implementation
+Deep modules have:
 
-```
-┌─────────────────────┐
-│   Small Interface   │  ← Few methods, simple params
-├─────────────────────┤
-│                     │
-│                     │
-│  Deep Implementation│  ← Complex logic hidden
-│                     │
-│                     │
-└─────────────────────┘
-```
+- small interface. e.g. Few methods, simple params.
+- hidden, but well built, complex logic.
 
-**Shallow module** = large interface + little implementation (avoid)
+In contrast, shallow module have:
 
-```
-┌─────────────────────────────────┐
-│       Large Interface           │  ← Many methods, complex params
-├─────────────────────────────────┤
-│  Thin Implementation            │  ← Just passes through
-└─────────────────────────────────┘
-```
+- large interface: Many methods, complex params.
+- little implementation.
 
 When designing interfaces, ask:
 
-- Can I reduce the number of methods?
-- Can I simplify the parameters?
+- Can I reduce number of methods?
+- Can I simplify parameters?
 - Can I hide more complexity inside?
