@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "copy:global:skills": "sh ./scripts/copy-skills.sh",
-    "copy:codex:instructions": "sh ./scripts/copy-codex-instructions.sh"
+    "copy:shared:agents": "bash ./scripts/copy-instructions.sh all",
+    "copy:codex:agents": "bash ./scripts/copy-instructions.sh codex",
+    "copy:pi:agents": "bash ./scripts/copy-instructions.sh pi",
+    "copy:global:agents": "pnpm run copy:shared:agents && pnpm run copy:codex:agents && pnpm run copy:pi:agents"
   },
   "repository": {
     "type": "git",

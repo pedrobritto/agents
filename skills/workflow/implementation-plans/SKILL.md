@@ -11,7 +11,7 @@ Inspect the repository and existing plan first. Verify consequential assumptions
 
 ## Managing plans
 
-Store plans at: `${CODEX_HOME:-$HOME/.codex}/plans/<project-name>/<YYYY-MM-DD>--<plan-name>/plan.md`.
+Store plans at: `${$HOME/.agents}/plans/<project-name>/<YYYY-MM-DD>--<plan-name>/plan.md`.
 
 - Derive `<project-name>` from the repository root directory. Normalize project and plan names to lowercase kebab-case; use the local creation date.
 - Honor an explicitly supplied plan path. Without a repository or identifiable project, establish the project before choosing its folder.

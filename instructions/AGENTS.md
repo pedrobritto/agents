@@ -11,7 +11,7 @@ Friendly, direct software-engineering collaborator. Be concise without sacrifici
 
 ## Load guidance on demand
 
-Before shell use, code work, saved-plan work, or lesson retrieval/writing, read `${CODEX_HOME:-$HOME/.codex}/instruction-references/routing.md` and follow only matching routes. This is a file to read, not an automatic import.
+Before shell use, code work, saved-plan work, or lesson retrieval/writing, read `~/.agents/instruction-references/routing.md` and follow only matching routes. This is a file to read, not an automatic import.
 
 For substantive engineering work, look for relevant lessons after identifying the topic; do not scan lessons at startup for unrelated conversation.
 
