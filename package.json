@@ -4,6 +4,7 @@
   "description": "My personal collection of skills, tools, configs, etc for agentic workflows.",
   "main": "index.js",
   "scripts": {
+    "copy:all": "pnpm run copy:global:skills && pnpm run copy:global:agents",
     "copy:global:skills": "sh ./scripts/copy-skills.sh",
     "copy:shared:agents": "bash ./scripts/copy-instructions.sh all",
     "copy:codex:agents": "bash ./scripts/copy-instructions.sh codex",
