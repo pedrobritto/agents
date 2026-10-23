@@ -9,16 +9,17 @@ HARNESS="${1:-all}"
 SHARED_DIR="$HOME/.agents/instruction-references"
 CODEX_DIR="${CODEX_HOME:-$HOME/.codex}"
 PI_DIR="${PI_CODING_AGENT_DIR:-$HOME/.pi/agent}"
+CLAUDE_DIR="${CLAUDE_CONFIG_DIR:-$HOME/.claude}"
 
 if [[ $# -gt 1 ]]; then
-  echo "Usage: bash $0 [codex|pi|all]" >&2
+  echo "Usage: bash $0 [codex|pi|claude|all]" >&2
   exit 1
 fi
 
 case "$HARNESS" in
-  codex|pi|all) ;;
+  codex|pi|claude|all) ;;
   *)
-    echo "Usage: bash $0 [codex|pi|all]" >&2
+    echo "Usage: bash $0 [codex|pi|claude|all]" >&2
     exit 1
     ;;
 esac
@@ -37,4 +38,10 @@ if [[ "$HARNESS" == pi || "$HARNESS" == all ]]; then
   mkdir -p "$PI_DIR"
   cp "$PROJECT_ROOT/instructions/AGENTS.md" "$PI_DIR/AGENTS.md"
   echo "✓ Pi instructions copied to $PI_DIR/AGENTS.md"
+fi
+
+if [[ "$HARNESS" == claude || "$HARNESS" == all ]]; then
+  mkdir -p "$CLAUDE_DIR"
+  cp "$PROJECT_ROOT/instructions/AGENTS.md" "$CLAUDE_DIR/CLAUDE.md"
+  echo "✓ Claude instructions copied to $CLAUDE_DIR/CLAUDE.md"
 fi

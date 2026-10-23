@@ -9,7 +9,8 @@
     "copy:shared:agents": "bash ./scripts/copy-instructions.sh all",
     "copy:codex:agents": "bash ./scripts/copy-instructions.sh codex",
     "copy:pi:agents": "bash ./scripts/copy-instructions.sh pi",
-    "copy:global:agents": "pnpm run copy:shared:agents && pnpm run copy:codex:agents && pnpm run copy:pi:agents"
+    "copy:claude:agents": "bash ./scripts/copy-instructions.sh claude",
+    "copy:global:agents": "pnpm run copy:shared:agents && pnpm run copy:codex:agents && pnpm run copy:pi:agents && pnpm run copy:claude:agents"
   },
   "repository": {
     "type": "git",
