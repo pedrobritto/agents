@@ -10,23 +10,18 @@ Follow below instructions when writing code.
 ## General
 
 - Optimize for: correct behavior, clear intent, safe change, low maintenance cost.
-- Prefer: evidence over dogma; local consistency over personal taste.
 - Prefer: direct control flow, explicit data flow, standard language features.
-- Work in small valuable increments.
 - Get fast feedback for your work: test, type-check, lint, run, review.
 - Build for confirmed requirements ONLY. NO speculative code.
-- Pick simplest design that fully satisfies constraints.
-- Reduce: states, branches, concepts, indirection.
-- Make dependency direction obvious; avoid cycles.
+- Pick simplest design that fully satisfies constraints and solution.
+- Reduce: states, side-effects, branches, concepts, indirection.
 
 ## Clean Code
 
-- Functions → one responsibility.
-- Side effects: should be visible and controlled.
+- Functions: single responsibility.
 - Handle errors at layer that can add context/recover.
 - NEVER abstract early.
-- Comments explain why, constraints, hazards; never implementation.
-- Public APIs → small; hide implementation details.
+- Comments explain why, constraints, hazards; not implementation.
 
 ## Deep modules
 
@@ -51,14 +46,13 @@ When designing interfaces, ask:
 ## Variable Naming
 
 - Name by domain meaning and role. e.g.: `invoiceTotal` vs `value`.
-- USE: verbs for actions; nouns for values; `is`/`has`/`can` for booleans.
 - Match name precision to scope: short locally, explicit across boundaries.
 - Include units/representation when ambiguous. e.g.: `timeoutMs`, `createdAtUtc`.
 - NEVER: unexplained abbreviations, magic numbers, type-encoded names, misleading names.
 
 ## Debugging
 
-- Reproduce bugs before fix, if possible.
+- Reproduce and document bugs before fix, if possible.
 
 ## Structure
 
@@ -67,7 +61,7 @@ When designing interfaces, ask:
 
 ## Style
 
-- Separate distinct code blocks/sections with empty lines. E.g. between: conditionals, variable/fn declaration, method calls, etc.
+- Separate distinct/unrelated code blocks/sections with empty lines. E.g. between: conditionals, variable/fn declaration, method calls, etc.
 
 ## Tests
 
@@ -85,4 +79,4 @@ When designing interfaces, ask:
 
 ## Finishing
 
-- Tell the user what changed, why, and how to verify.
+- Tell the user what you changed, why, and how it can verify.
