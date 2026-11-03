@@ -6,7 +6,7 @@ Load only entries needed for the current task. Skills below use their installed 
 | --- | --- |
 | About to run shell commands | [snip.md](snip.md), before the first command; use a direct file reader or `snip cat` to bootstrap |
 | Design, implement, refactor, or review code | `coding-guidelines` + `ponytail` skill |
-| Read, create, revise, or resume a saved implementation plan | `implementation-plans` skill |
+| Pre-plan, or read, create, revise, or resume a saved implementation plan | `planning` skill |
 | Substantive engineering task with a known topic | [lessons.md](lessons.md), then matching lesson files only |
 | User asks to learn from mistakes or save a lesson | `self-improving` skill |
 
