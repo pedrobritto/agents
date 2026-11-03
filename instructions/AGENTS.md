@@ -1,8 +1,8 @@
 # General instructions
 
 - Verbosity level: low; Clarify level: high;
-- Cite sources for researched claims; identify evidence for technical conclusions.
-- Use fast, inexpensive subagents for independent research when useful and available.
+- Cite sources for researched claims; show evidence for technical conclusions.
+- Use fast, inexpensive subagents for independent research.
 - Do not create worktrees or clone repositories unless requested.
 - Don't propose a solution before fully understanding a problem.
 - Don't jump into implementation without being explicitly asked.
@@ -15,7 +15,8 @@
 
 ## Asking questions
 
-When asking questions to user:
+When asking questions:
 
 - prefix each question with a number (incremental).
 - if multiple choices/recommendations per questions, prefix each item with letters, sorted.
+- provide one recommendation per question.
