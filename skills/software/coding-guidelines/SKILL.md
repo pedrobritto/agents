@@ -5,78 +5,54 @@ description: Use when writing/editing code.
 
 # Coding guidelines
 
-Follow below instructions when writing code.
+## Before writing
 
-## General
+- Read the code the change touches; trace the real flow end to end.
+- Bugs: reproduce first, fix the root cause. Grep every caller of the function you change; prefer one fix in the shared path over per-caller patches.
 
-- Optimize for: correct behavior, clear intent, safe change, low maintenance cost.
-- Prefer: direct control flow, explicit data flow, standard language features.
-- Get fast feedback for your work: test, type-check, lint, run, review.
-- Build for confirmed requirements ONLY. NO speculative code.
-- Pick simplest design that fully satisfies constraints and solution.
-- Reduce: states, side-effects, branches, concepts, indirection.
+## Smallest solution
 
-## Clean Code
+Stop at the first rung that works:
 
-- Functions: single responsibility.
-- Handle errors at layer that can add context/recover.
-- NEVER abstract early.
-- Comments explain why, constraints, hazards; not implementation.
+1. Unconfirmed need → skip it, say so.
+2. Exists in codebase → reuse.
+3. Stdlib.
+4. Native platform feature: `<input type="date">` over a picker lib, CSS over JS, DB constraint over app code.
+5. Installed dependency. Never add one for what a few lines do.
+6. Minimum new code.
 
-## Deep modules
+- Equal-size options → the one correct on edge cases.
+- Deletion over addition, boring over clever, fewest files.
+- Reduce states, side effects, branches, concepts, indirection.
+- No unrequested abstractions: single-implementation interfaces, single-product factories, config for constants, scaffolding "for later".
+- Prefer deep modules: small interface (few methods, simple params), complexity hidden inside.
+- Deliberate shortcut with a known ceiling (global lock, O(n²) scan) → comment the ceiling and upgrade path.
+- Never simplify away: input validation at trust boundaries, error handling that prevents data loss, security, accessibility, anything requested.
+- Clean up code you touch (simpler flow, clearer names, stronger tests), adjacent to the change only. No broad rewrites.
 
-Pick Deep Modules when possible. Shallow only when deep not possible.
+## Naming
 
-Deep modules have:
-
-- small interface. e.g. Few methods, simple params.
-- hidden, but well built, complex logic.
-
-In contrast, shallow module have:
-
-- large interface: Many methods, complex params.
-- little implementation.
-
-When designing interfaces, ask:
-
-- Can I reduce number of methods?
-- Can I simplify parameters?
-- Can I hide more complexity inside?
-
-## Variable Naming
-
-- Name by domain meaning and role. e.g.: `invoiceTotal` vs `value`.
-- Match name precision to scope: short locally, explicit across boundaries.
-- Include units/representation when ambiguous. e.g.: `timeoutMs`, `createdAtUtc`.
-- NEVER: unexplained abbreviations, magic numbers, type-encoded names, misleading names.
-
-## Debugging
-
-- Reproduce and document bugs before fix, if possible.
-
-## Structure
-
-- Keep related behavior close.
-- Follow repository conventions unless they harm correctness.
+- Include units/representation when ambiguous: `timeoutMs`, `createdAtUtc`.
+- No unexplained abbreviations, magic numbers, or type-encoded names.
 
 ## Style
 
-- Separate distinct/unrelated code blocks/sections with empty lines. E.g. between: conditionals, variable/fn declaration, method calls, etc.
+- Separate distinct blocks with blank lines, e.g. between conditionals, declarations, method calls.
 
 ## Tests
 
-- DO test observable behavior, NOT implementation details.
-- One focused behavior branch per test.
-- DO ADD coverage for critical code paths, including: main behavior, error handling, conditionals.
-- For UI assertions prefer user-visible text, then `data-testid`, IDs, and tag names.
-- Prefer `waitFor()` for asynchronous assertions when supported; no waits on synchronous checks.
-- NO mocking internal hooks, functions, and components where possible. Mock external boundaries as needed; isolate mocks, storage, cookies, and caches between tests.
-- NEVER remove tests, weaken assertions, or reduce coverage scope TO make checks pass.
+- Test observable behavior, not implementation. One behavior per test.
+- Cover critical paths: main behavior, error handling, conditionals.
+- UI queries: user-visible text > `data-testid` > IDs > tag names.
+- `waitFor()` for async assertions when supported; never for synchronous checks.
+- Mock external boundaries only, not internal hooks/functions/components. Isolate mocks, storage, cookies, caches between tests.
+- NEVER remove tests, weaken assertions, or reduce coverage to make checks pass.
 
 ## TypeScript
 
-- No `any`, type casts, or non-null assertions. Use `unknown`, narrowing, and type guards.
+- No `any`, casts, or non-null assertions. Use `unknown`, narrowing, type guards.
 
-## Finishing
+## Finish
 
-- Tell the user what you changed, why, and how it can verify.
+- Run tests, type-check, lint.
+- Report: what changed, why, how to verify, what was skipped and when to add it. No unrequested prose.

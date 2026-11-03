@@ -5,14 +5,7 @@ description: Use when asked to find/search tech debt.
 
 # Find Tech Debt
 
-## Workflow
-
-1. Search. Look for low quality code, hard-to-maintain code, bug-prone/bug-confirmed code.
-2. Fix immediately if low effort: when changes are small, related, safely verifiable.
-3. Record larger debt: its current impact, debt evidence, your proposed solutions.
-
-## Guidelines
-
-- Prioritize by recurring cost × change frequency × failure risk.
-- Never conceal workaround; document its constraint and removal condition.
-- Output findings to the chat, ordered by priority.
+1. Ask for scope: a path, or the HEAD-vs-base diff.
+2. Find low-quality, hard-to-maintain, or bug-prone code.
+3. Report in chat, ranked by recurring cost × change frequency × failure risk. Each item: impact, evidence (`file:line`), proposed fix.
+4. Fix only on request.

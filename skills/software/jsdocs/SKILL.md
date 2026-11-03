@@ -1,79 +1,23 @@
 ---
 name: jsdocs
-description: On writing good jsdocs.
+description: Use when writing JSDoc comments.
 ---
 
 # JSDocs
 
-## Overview
-
-- Prefer a single-line, concise doc.
-- Document what can't be quickly inferred from reading code:
-  - Function goal/what it does.
-  - Non-obvious behavior, quicks, invariants.
-- DON'T document implementation details information that can get stale after code changes.
-
-## What to document
-
-Write JSDocs, when helpful, for:
-
-- functions
-- classes
-- interfaces and its properties.
-- types
-
-## Tag usage
-
-Allowed tags:
-
-- @returns
-- @params
-
-Other tags: avoid unless absolutely required.
-
-## React Components
-
-No tags for react components, as they are implicit.
-
-## Other
-
-- variables: doc only if name non-obvious and good name is impossible.
-
-## Examples
+- Document functions, classes, interfaces (and properties), and types only when it adds what the code doesn't show: purpose, non-obvious behavior, quirks, invariants.
+- Variables: only when no good name is possible.
+- No implementation details that go stale.
+- Prefer one line. Use `@param`/`@returns` only when they add info beyond name and type; other tags only if required. React components: no tags.
 
 ```ts
-/** Some hopefully relevant description. Otherwise, don't comment. */
-const someConst = 1234;
-
-/** Type description. */
-type SomeType = string;
-
-/** Interface Description. */
-interface ISomeInterface {
-  /** Property description. */
-  property: string;
-}
+/** Retries with exponential backoff; throws after `maxAttempts`. */
+function fetchWithRetry(url: string, maxAttempts: number) {}
 
 /**
- * Fn description.
+ * Splits an amount into installments; remainder cents go to the first.
  *
- * @param arg1 Arg1 description
- * @param arg2 Arg2 description
- * @param arg3 Arg3 description
+ * @param totalCents Non-negative integer.
  */
-function fn(arg1: string, arg2: number, arg3: boolean) {
-  // no return statement
-}
-
-/**
- * Fn description.
- *
- * @param arg1 Arg1 description
- * @returns The returns description
- */
-function fn2(arg1: string) {
-  return 1;
-}
-/** The component's description. */
-function SomeComponent(props: ISomeComponentInterface) {}
+function splitAmount(totalCents: number, count: number): number[] {}
 ```

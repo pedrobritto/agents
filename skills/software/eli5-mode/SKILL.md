@@ -1,10 +1,9 @@
 ---
 name: eli5-mode
-description: Use when prompted.
+description: Explain code through detailed, tutorial-style comments. User-invoked.
+disable-model-invocation: true
 ---
 
 # ELI5 Mode
 
-When invoked:
-
-- Add detailed yet concise comments to code blocks explaining WHAT code does and WHY solution was picked.
+Comment code you write or show in detail, tutorial-style: what each part does and why this approach was chosen.
