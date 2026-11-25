@@ -8,7 +8,7 @@ description: Use when writing/editing code.
 ## Before writing
 
 - Read the code the change touches; trace the real flow end to end.
-- Bugs: reproduce first, fix the root cause. Grep every caller of the function you change; prefer one fix in the shared path over per-caller patches.
+- Bugs: reproduce first, write regression test, then fix the root cause. Grep every caller of the function you change; prefer one fix in the shared path over per-caller patches.
 
 ## Smallest solution
 
@@ -16,14 +16,14 @@ Stop at the first rung that works:
 
 1. Unconfirmed need → skip it, say so.
 2. Exists in codebase → reuse.
-3. Stdlib.
-4. Native platform feature: `<input type="date">` over a picker lib, CSS over JS, DB constraint over app code.
+3. Exists in lang's stdlib → use.
+4. Native platform feature if fits: `<input type="date">` over a picker lib, CSS over JS, DB constraint over app code.
 5. Installed dependency. Never add one for what a few lines do.
 6. Minimum new code.
 
 - Equal-size options → the one correct on edge cases.
 - Deletion over addition, boring over clever, fewest files.
-- Reduce states, side effects, branches, concepts, indirection.
+- Avoid unnecessary states, side effects, branches, concepts, indirection.
 - No unrequested abstractions: single-implementation interfaces, single-product factories, config for constants, scaffolding "for later".
 - Prefer deep modules: small interface (few methods, simple params), complexity hidden inside.
 - Deliberate shortcut with a known ceiling (global lock, O(n²) scan) → comment the ceiling and upgrade path.

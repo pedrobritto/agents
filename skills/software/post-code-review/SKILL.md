@@ -1,12 +1,11 @@
 ---
 name: post-code-review
-description: Review your own code changes. User-invoked.
-disable-model-invocation: true
+description: Review your own code changes.
 ---
 
 # Post Code Review
 
-Review your changes for:
+Review current branch..HEAD diff for:
 
 - Refactor candidates: simpler flow, clearer names, needless abstraction.
 - Security issues.

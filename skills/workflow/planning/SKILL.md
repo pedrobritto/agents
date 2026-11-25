@@ -7,7 +7,7 @@ description: Use when asked to pre-plan, plan, or read/write/update/resume imple
 
 Two phases: **pre-plan** (understand the problem) → **plan** (write the implementation plan). Run both unless the user asks for only one. When resuming an existing plan, skip to the matching phase.
 
-## Phase 1: Pre-plan
+## Phase 1: Understanding and Research
 
 Consolidate a precise understanding of the problem before planning.
 
@@ -48,7 +48,6 @@ Plan directory files:
 
 - `plan.md`: the actual plan.
 - `state.md`: current state, such as completed/in progress/pending steps.
-- `scratchpad.md`: your personal notes/ideas, if needed.
 
 ### Structure
 
