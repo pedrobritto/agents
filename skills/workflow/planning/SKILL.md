@@ -28,26 +28,11 @@ Write to output (not file system) a minimal yet complete summary of the problem 
 
 Never jump to implementation.
 
-## Phase 2: Plan
+## Phase 2: Write Plan
 
 - Write self-contained plans for an engineer resuming without chat history: ALL required context — file names, decisions, etc. — so a fresh agent can start without asking questions. Include only information needed to decide, execute, verify, revert, or resume. Summarize essential findings inline; links support context.
 - Carry the confirmed pre-plan summary into **Objective** and **Scope and guardrails**.
 - Label unresolved questions rather than inventing certainty. Don't write a plan with open questions.
-
-### Managing plans
-
-Store plans at `${$HOME/.agents}/plans/<project-name>/<YYYY-MM-DD>--<plan-name>/`.
-
-- `<project-name>` → infer from repository root directory. Project/plan names → lowercase kebab-case; use local creation date.
-- No repository/identifiable project? Establish/ask project name before choosing its folder.
-- Before creating a plan, inspect the project's existing plan filenames and read likely matches. Update the matching plan for continuing work; create a new one for distinct work. Ask only when the target is genuinely ambiguous.
-- When updating, reconcile stale steps and record completed work, actual check results, and next actions. Preserve useful decisions; avoid appending contradictory plans.
-- Honor explicitly supplied plan paths.
-
-Plan directory files:
-
-- `plan.md`: the actual plan.
-- `state.md`: current state, such as completed/in progress/pending steps.
 
 ### Structure
 
@@ -79,3 +64,7 @@ Finish this cycle before the next slice. Never batch all tests, then all impleme
 ### After plan creation/edit
 
 Do not jump to execution. Tell the user you are ready to implement.
+
+## Other
+
+Read ./references/managing-plans.md to learn how to read/create/update plans.
