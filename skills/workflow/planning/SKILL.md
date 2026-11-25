@@ -67,4 +67,4 @@ Do not jump to execution. Tell the user you are ready to implement.
 
 ## Other
 
-Read ./references/managing-plans.md to learn how to read/create/update plans.
+Use the managing-plans skill before reading/creating/updating plans.

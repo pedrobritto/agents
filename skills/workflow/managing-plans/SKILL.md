@@ -1,3 +1,8 @@
+---
+name: managing-plans
+descriptions: use before reading/creating/updating plans.
+---
+
 # Managing plans
 
 Store plans at `${$HOME/.agents}/plans/<project-name>/<YYYY-MM-DD>--<plan-name>/`.
