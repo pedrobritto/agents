@@ -4,6 +4,9 @@
   "description": "My personal collection of skills, tools, configs, etc for agentic workflows.",
   "main": "index.js",
   "scripts": {
+    "sync:skills": "node ./scripts/manage-skills.cjs sync",
+    "install:skills": "node ./scripts/manage-skills.cjs install",
+    "test": "node --test scripts/manage-skills.test.cjs",
     "copy:all": "pnpm run copy:global:skills && pnpm run copy:global:agents",
     "copy:global:skills": "bash ./scripts/copy-skills.sh",
     "copy:shared:agents": "bash ./scripts/copy-instructions.sh all",
