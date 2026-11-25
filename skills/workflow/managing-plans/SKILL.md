@@ -1,6 +1,6 @@
 ---
 name: managing-plans
-descriptions: use before reading/creating/updating plans.
+description: use before reading/creating/updating plans.
 ---
 
 # Managing plans
