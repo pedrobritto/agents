@@ -44,4 +44,6 @@ if [[ "$HARNESS" == claude || "$HARNESS" == all ]]; then
   mkdir -p "$CLAUDE_DIR"
   cp "$PROJECT_ROOT/instructions/AGENTS.md" "$CLAUDE_DIR/CLAUDE.md"
   echo "✓ Claude instructions copied to $CLAUDE_DIR/CLAUDE.md"
+
+  bash "$PROJECT_ROOT/scripts/link-claude-skills.sh"
 fi

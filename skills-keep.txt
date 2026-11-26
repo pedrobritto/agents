@@ -1,0 +1,7 @@
+# Skills in ~/.agents/skills that copy:global:skills must never move out, one name per line.
+# Use this for skills that come from neither this repo nor the Skills CLI (npx skills).
+
+# Installed by the Orca app, which does not restore deleted skills (`orca skills update` never adds one).
+# Reinstall with: orca skills install --skill orca-cli --skill orchestration
+orca-cli
+orchestration

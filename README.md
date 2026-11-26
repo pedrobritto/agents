@@ -35,7 +35,7 @@ pnpm copy:pi:agents
 pnpm copy:claude:agents
 ```
 
-Each command also updates the shared references. Despite its name, `pnpm copy:shared:agents` deploys both the shared references and instructions for all three harnesses.
+Each command also updates the shared references. Deploying Claude instructions also runs `scripts/link-claude-skills.sh`, which symlinks each skill in `~/.agents/skills/` into `~/.claude/skills/` (or `$CLAUDE_CONFIG_DIR/skills/`), since Claude does not read `~/.agents/skills/`. Skills already linked under any name are left alone, and existing entries are never overwritten. Broken links pointing into `~/.agents/skills/` (deleted skills) are removed; other entries are untouched. Despite its name, `pnpm copy:shared:agents` deploys both the shared references and instructions for all three harnesses.
 
 ### Skills
 
@@ -44,6 +44,14 @@ pnpm copy:global:skills
 ```
 
 The script finds directories containing `SKILL.md` under `skills/` and copies each directory, including its supporting files, into `~/.agents/skills/`. Category directories such as `software/`, `workflow/`, and `learning/` are not included in the destination path.
+
+Before copying, it moves every skill directory in `~/.agents/skills/` to `~/.agents/skills-removed/<timestamp>/` unless the skill is:
+
+- in this repository's `skills/`;
+- installed by the Skills CLI (a non-local entry in `~/.agents/.skill-lock.json`); or
+- listed in `skills-keep.txt` (one name per line, `#` comments), for skills installed by other tools.
+
+This cleans up renamed or deleted skills. An invalid global lockfile aborts before anything is moved. Delete old backups manually.
 
 ### External skills
 
@@ -72,7 +80,7 @@ Both commands are explicit: `copy:all` neither captures nor installs external de
 
 ### Copy behavior
 
-Commands create missing directories and overwrite matching deployed files; unrelated files are preserved, and stale files are not removed. Back up any customized deployed files before copying.
+Commands create missing directories and overwrite matching deployed files; unrelated files are preserved, and stale files are not removed (except the skill cleanup above). Back up any customized deployed files before copying.
 
 Shared references and copied local skills always live under `~/.agents`, regardless of harness directory overrides. References left over in `~/.codex/instruction-references/` from the old layout are no longer used and can be archived.
 
