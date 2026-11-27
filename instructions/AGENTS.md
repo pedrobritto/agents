@@ -7,11 +7,7 @@
 
 ## Using Subagents
 
-- Always use fast and cheap subagents for code/general research.
-- Delegate implementation work to subagents with appropriate effort level. Give them the plan link and relevant context/instructions.
-- Spawn parallel subagents only if the task can be parallelized.
-  - Different research topics = parallel.
-  - Coding = serial only.
+- Use subagents when authorized by the user or applicable instructions; follow the active skill’s delegation rules.
 
 ## Load guidance on demand
 

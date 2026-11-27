@@ -1,6 +1,6 @@
 ---
-name: code-review
-description: Review your own code changes.
+name: my-code-review
+description: Independently review code changes against a written plan without editing files.
 ---
 
 # Code Review
